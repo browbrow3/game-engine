@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/Documentation/">
+    <File Path="Documentation/Architecture.md" />
+  </Folder>
+  <Project Path="GameEngine/GameEngine.csproj" />
+  <Project Path="GameEngine_Tests/GameEngine_Tests.csproj" Id="6e43104d-5a3a-411f-85a7-77b260a42891" />
+</Solution>

@@ -1,0 +1,42 @@
+{
+  "0": {
+    "Type": 0,
+    "Name": "default",
+    "Tangiable": true,
+    "SpeedMultiplier": 0.0,
+    "StatusEffects": 0,
+    "PrintChar": "?"
+  },
+  "1": {
+    "Type": 1,
+    "Name": "grass",
+    "Tangiable": false,
+    "SpeedMultiplier": 1.0,
+    "StatusEffects": 0,
+    "PrintChar": " "
+  },
+  "2": {
+    "Type": 2,
+    "Name": "water",
+    "Tangiable": true,
+    "SpeedMultiplier": 0.0,
+    "StatusEffects": 0,
+    "PrintChar": "#"
+  },
+  "3": {
+    "Type": 3,
+    "Name": "stone",
+    "Tangiable": false,
+    "SpeedMultiplier": 1.0,
+    "StatusEffects": 0,
+    "PrintChar": "."
+  },
+  "4": {
+    "Type": 4,
+    "Name": "stonewall",
+    "Tangiable": false,
+    "SpeedMultiplier": 1.0,
+    "StatusEffects": 0,
+    "PrintChar": "~"
+  }
+}

@@ -14,6 +14,22 @@ Is responsible for initializing all managers and engines before entering and han
 
 > note - could consider moving to a hosted service so that setup is handled in a more framework-consistent way
 
+#### API:
+
+1. `InitializeAsync()` - Initializes all managers and engines, and prepares the game for the main loop. 
+1. `Start()` - Starts the main game loop, which will run until the game is exited.
+1. `Stop()` - Stops the main game loop and performs any necessary cleanup.
+
+> Notes:  
+> - Presumably it only really makes sense to initialize the engine and start the game once some start menu has decided in what way the game should be started?
+> - Perhaps said start menu would decide (and then pass to the game engine):
+>   - New Game?
+>       - What mode to use (singleplayer, multiplayer)
+>       - What map to load
+>   - Load Existing Game?
+>       - What save file/game to load
+> - may need to add methods to the API to support the above?
+
 ### EntityManager
 
 #### Overview:
