@@ -1,0 +1,47 @@
+{
+  "1": {
+    "Type": 1,
+    "Name": "player",
+    "Alive": true,
+    "Health": 10,
+    "Attack": 1,
+    "Defence": 1,
+    "Arcana": 1,
+    "Esotericism": 1,
+    "Vulnerable": true,
+    "Tangiable": true,
+    "Speed": 1,
+    "Spriteresolution": 16,
+    "Stamina": 10
+  },
+  "2": {
+    "Type": 2,
+    "Name": "enemy",
+    "Alive": true,
+    "Health": 20,
+    "Attack": 8,
+    "Defence": 6,
+    "Arcana": 6,
+    "Esotericism": 3,
+    "Vulnerable": true,
+    "Tangiable": true,
+    "Speed": 3,
+    "Spriteresolution": 16,
+    "Stamina": 20
+  },
+  "3": {
+    "Type": 3,
+    "Name": "item",
+    "Alive": false,
+    "Health": 1,
+    "Attack": 0,
+    "Defence": 0,
+    "Arcana": 0,
+    "Esotericism": 0,
+    "Vulnerable": false,
+    "Tangiable": true,
+    "Speed": 0,
+    "Spriteresolution": 16,
+    "Stamina": 0
+  }
+}

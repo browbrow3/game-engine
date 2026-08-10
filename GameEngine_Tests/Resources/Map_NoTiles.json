@@ -1,0 +1,14 @@
+{
+  "Entities": [
+    {
+      "EntityType": 1,
+      "X": 1,
+      "Y": 0
+    },
+    {
+      "EntityType": 2,
+      "X": 2,
+      "Y": 2
+    }
+  ]
+}
