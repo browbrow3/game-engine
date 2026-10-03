@@ -66,4 +66,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Graphics\Console\Sprites\" />
+  </ItemGroup>
+
 </Project>

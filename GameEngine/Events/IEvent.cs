@@ -8,6 +8,6 @@
         /// <summary>
         /// Gets the type of the event, represented by the EventType enum.
         /// </summary>
-        EventType Type { get; init; }
+        EventType Type { get; }
     }
 }

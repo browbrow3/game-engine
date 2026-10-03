@@ -41,7 +41,7 @@ internal class Program
             loggerFactory.CreateLogger<GameEngine.GameEngine>()
         );
 
-        gameEngine.Start();
+        await gameEngine.Start();
 
         logger.Information("======== CLEARDOWN ========");
     }

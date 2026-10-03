@@ -31,6 +31,15 @@ namespace GameEngine.Map
         ITile GetTile(int x, int y);
 
         /// <summary>
+        /// Tries to get the tile at the specified coordinates.
+        /// </summary>
+        /// <param name="x">x-coordinate.</param>
+        /// <param name="y">y-coordinate.</param>
+        /// <param name="tile">the tile retrieved, or null if no tile was found.</param>
+        /// <returns>true if a tile was found, else false.</returns>
+        bool TryGetTile(int x, int y, out ITile? tile);
+
+        /// <summary>
         /// Determines whether the tile at the specified coordinates is passable.
         /// </summary>
         /// <param name="x">x-coordinate.</param>

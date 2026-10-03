@@ -35,6 +35,18 @@ namespace GameEngine.Map
             return this.Tiles[y, x];
         }
 
+        public bool TryGetTile(int x, int y, out ITile? tile)
+        {
+            if (x < 0 || x >= this.Width || y < 0 || y >= this.Height)
+            {
+                tile = default;
+                return false;
+            }
+
+            tile = this.Tiles[y, x];
+            return true;
+        }
+
         /// <inheritdoc/>
         public bool IsTilePassable(int x, int y) => this.GetTile(x, y).Passable;
 

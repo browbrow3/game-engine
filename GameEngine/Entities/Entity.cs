@@ -1,4 +1,5 @@
 ﻿using GameEngine.Events;
+using GameEngine.Graphics;
 using System.Text.Json.Serialization.Metadata;
 
 namespace GameEngine.Entities
@@ -7,7 +8,9 @@ namespace GameEngine.Entities
     /// <summary>
     /// Basic implementation of an entity in the game engine.
     /// </summary>
-    public class Entity : IEntity, IJsonSerializable<Entity>
+    public class Entity(
+        //ISpriteRepository spriteRepository
+    ) : IEntity, IJsonSerializable<Entity>
     {
         /// <inheritdoc/>
         public static JsonTypeInfo<Entity> JsonTypeInfo =>
@@ -23,10 +26,13 @@ namespace GameEngine.Entities
         public string Name { get; set; } = string.Empty;
 
         /// <inheritdoc/>
-        public float X { get; set; }
+        public int X { get; set; }
 
         /// <inheritdoc/>
-        public float Y { get; set; }
+        public int Y { get; set; }
+
+        /// <inheritdoc/>
+        public required ISprite Sprite { get; set; }
 
         /// <inheritdoc/>
         public void HandleEvent(IEvent e)

@@ -192,6 +192,39 @@ namespace GameEngine_Tests.Map
                 .Should().ThrowExactly<ArgumentOutOfRangeException>();
         }
         #endregion
+        #region TryGetTile Tests
+        [Fact]
+        public void TryGetTile_ReturnsCorrectTile()
+        {
+            map.TryGetTile(2, 1, out ITile? tile).Should().BeTrue();
+            tile.Should().Be(this.mockTiles[1, 2].Object);
+        }
+
+        [Theory]
+        [InlineData(-1, -1)]
+        [InlineData(2, -1)]
+        [InlineData(2, 3)]
+        [InlineData(-1, 2)]
+        [InlineData(3, 2)]
+        [InlineData(3, 3)]
+        public void GetTile_IndexOutOfRange_ReturnsFalse_TileIsNull(int x, int y)
+        {
+            GameEngine.Map.Map map = new GameEngine.Map.Map(
+                new MapDto()
+                {
+                    Tiles = [
+                        [TileType.Stone, TileType.Grass, TileType.Water],
+                        [TileType.Grass, TileType.Stone, TileType.StoneWall],
+                        [TileType.Stone, TileType.Water, TileType.Grass]
+                    ]
+                },
+                this.tileDefinitions
+            );
+
+            map.TryGetTile(x, y, out ITile? tile).Should().BeFalse();
+            tile.Should().BeNull();
+        }
+        #endregion
         #region IsTilePassable Tests
 
         [Fact]
@@ -242,7 +275,7 @@ namespace GameEngine_Tests.Map
         [Fact]
         public void AddEntityToTile_EntityAddedToCorrectTile_ReturnsSuccess()
         {
-            IEntity entity = new Entity();
+            IEntity entity = new Mock<Entity>().Object;
 
             this.mockTiles[1, 2].Setup(x => x.AddEntity((IEntity)entity)).Returns(0);
 
@@ -260,7 +293,7 @@ namespace GameEngine_Tests.Map
         [InlineData(3, 3)]
         public void AddEntityToTile_IndexOutOfRange_ThrowsArgumentOutOfRange(int x, int y)
         {
-            this.map.Invoking(m => m.AddEntityToTile(x, y, (IEntity)new Entity()))
+            this.map.Invoking(m => m.AddEntityToTile(x, y, (IEntity)new Mock<Entity>().Object))
                 .Should().ThrowExactly<ArgumentOutOfRangeException>();
         }
         #endregion
@@ -268,7 +301,7 @@ namespace GameEngine_Tests.Map
         [Fact]
         public void RemoveEntityFromTile_RemovesEntityFromCorrectTile_ReturnsSuccess()
         {
-            Entity entity = new Entity();
+            Entity entity = new Mock<Entity>().Object;
 
             this.mockTiles[1, 2].Setup(x => x.RemoveEntity((IEntity)entity)).Returns(0);
 
@@ -286,7 +319,7 @@ namespace GameEngine_Tests.Map
         [InlineData(3, 3, "x")]
         public void RemoveEntityFromTile_IndexOutOfRange_ThrowsArgumentOutOfRange(int x, int y, string paramName)
         {
-            this.map.Invoking(m => m.RemoveEntityFromTile(x, y, (IEntity)new Entity()))
+            this.map.Invoking(m => m.RemoveEntityFromTile(x, y, (IEntity)new Mock<Entity>().Object))
                 .Should().Throw<ArgumentOutOfRangeException>()
                 .WithMessage($"Coordinates are out of bounds. (Parameter '{paramName}')");
         }
@@ -297,8 +330,8 @@ namespace GameEngine_Tests.Map
         {
             List<IEntity> entities = new List<IEntity> 
             {
-                (IEntity)new Entity(),
-                (IEntity)new Entity()
+                (IEntity)new Mock<Entity>().Object,
+                (IEntity)new Mock<Entity>().Object
             };
 
             this.mockTiles[1, 2].Setup(x => x.GetEntities()).Returns(entities);

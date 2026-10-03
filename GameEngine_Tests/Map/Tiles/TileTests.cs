@@ -69,7 +69,7 @@ namespace GameEngine_Tests.Map.Tiles
                 definition,
                 new Dictionary<int, IEntity>() 
                 { 
-                    { 1, new Entity() } 
+                    { 1, new Mock<Entity>().Object } 
                 }
             );
 
@@ -82,7 +82,7 @@ namespace GameEngine_Tests.Map.Tiles
         public void AddEntity_EntityNotPresent_AddsEntityReturnsSuccess()
         {
             Tile tile = new Tile(definition);
-            IEntity entity = new Entity();
+            IEntity entity = new Mock<Entity>().Object;
             short result = tile.AddEntity(entity);
             result.Should().Be(0); // success
             tile.GetEntities().Should().Contain(entity);
@@ -92,7 +92,7 @@ namespace GameEngine_Tests.Map.Tiles
         public void AddEntity_EntityIsAlreadyPresent_DoesNotAddEntity_ReturnsNonSuccess()
         {
             Tile tile = new Tile(definition);
-            IEntity entity = new Entity();
+            IEntity entity = new Mock<Entity>().Object;
             short result = tile.AddEntity(entity);
             result.Should().Be(0); // success
             tile.GetEntities().Should().Contain(entity);
@@ -103,7 +103,7 @@ namespace GameEngine_Tests.Map.Tiles
         [Fact]
         public void RemoveEntity_EntityIsPresent_RemovesEntity_ReturnsSuccess()
         {
-            IEntity entity = new Entity();
+            IEntity entity = new Mock<Entity>().Object;
             Tile tile = new Tile(
                 definition,
                 new Dictionary<int, IEntity>()
@@ -119,7 +119,7 @@ namespace GameEngine_Tests.Map.Tiles
         [Fact]
         public void RemoveEntity_EntityIsNotPresent_DoesNotRemoveEntity_ReturnsNonSuccess()
         {
-            IEntity entity = new Entity();
+            IEntity entity = new Mock<Entity>().Object;
             Tile tile = new Tile(definition);
             short result = tile.RemoveEntity(entity);
             result.Should().Be(-1); // non-success
@@ -131,8 +131,8 @@ namespace GameEngine_Tests.Map.Tiles
         [Fact]
         public void GetEntities_ReturnsAllEntitiesOnTile()
         {
-            IEntity entity1 = new Entity();
-            IEntity entity2 = new Entity();
+            IEntity entity1 = new Mock<Entity>().Object;
+            IEntity entity2 = new Mock<Entity>().Object;
             Tile tile = new Tile(
                 definition,
                 new Dictionary<int, IEntity>()

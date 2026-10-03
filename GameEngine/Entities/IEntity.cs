@@ -1,4 +1,5 @@
 ﻿using GameEngine.Events;
+using GameEngine.Graphics;
 
 namespace GameEngine.Entities
 {
@@ -25,12 +26,17 @@ namespace GameEngine.Entities
         /// <summary>
         /// Gets or sets the x-coordinate of the entity's position.
         /// </summary>
-        float X { get; set; }
+        int X { get; set; }
 
         /// <summary>
         /// Gets or sets the y-coordinate of the entity's position.
         /// </summary>
-        float Y { get; set; }
+        int Y { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sprite associated with the entity, which defines its visual representation in the game.
+        /// </summary>
+        ISprite Sprite { get; set; }
 
         /// <summary>
         /// Handles an event that is relevant to the entity. This method allows the entity to respond to events in the game engine.

@@ -13,6 +13,12 @@
         IEntity? GetEntity(int id);
 
         /// <summary>
+        /// Gets all entities managed by the entity manager.
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<IEntity> GetAllEntities();
+
+        /// <summary>
         /// Adds a new entity to the manager and returns its unique identifier.
         /// </summary>
         /// <param name="entity">The entity to add.</param>
